@@ -8,4 +8,4 @@ python:
   - "3.5"
   - "nightly"
 
-script: py.test tests.py
+script: py.test tests/unit_tests.py

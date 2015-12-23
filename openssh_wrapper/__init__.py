@@ -28,7 +28,7 @@ def b(string):
     """
     if isinstance(string, bytes):
         return string
-    return string.encode('utf-8')
+    return string.encode(sys.stdout.encoding)
 
 
 def u(string):
@@ -37,7 +37,7 @@ def u(string):
     """
     if isinstance(string, text):
         return string
-    return string.decode('utf-8')
+    return string.decode(sys.stdout.encoding)
 
 
 def b_list(items):
@@ -80,8 +80,8 @@ class SSHConnection(object):
         :param server: server name or IP address to send commands to (required)
         :param login: user login (by default current login is used)
         :param port: SSH port number. Optional.
-        :param configfile: local configuration file (by default ~/.ssh/config is used)
-        :param identity_file:  address of the socket to connect to ssh agent,
+        :param configfile: local configuration file (default is ~/.ssh/config)
+        :param identity_file: address of the socket to connect to ssh agent,
         if you want to use it. ``SSH_AUTH_SOCK`` environment variable is
         used if None is supplied.
         :param ssh_agent_socket: address of the socket to connect to ssh agent
